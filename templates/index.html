@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flask Calculator</title>
+    <style>
+      body {
+        font-family: Arial;
+        text-align: center;
+        padding-top: 50px;
+      }
+      form {
+        display: inline-block;
+      }
+      input[type="submit"] {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+        margin: 5px;
+      }
+      input[name="expression"] {
+        width: 250px;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      .output {
+        
+      }
+      .result {
+        font-size: 24px;
+        color: green;
+        border: 2px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <form method="POST">
+      <input
+        type="text"
+        value="{{expression}}"
+        name="expression"
+        readonly
+      /><br />
+      <div class="result">{% if result !="" %}{{result}}{% endif %}</div>
+      {% for row in [ ['AC','%','⌫','/'], ['7','8','9','*'], ['4','5','6','-'],
+      ['1','2','3','+'], ['sqrt','0','.','=']] %} {% for btn in row %}
+      <input type="submit" name="submit" value="{{btn}}" />
+      {% endfor %}<br />
+      {% endfor %}
+    </form>
+  </body>
+</html>
